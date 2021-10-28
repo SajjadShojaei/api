@@ -12,7 +12,7 @@ export class FeedService {
         private readonly feedPostRepository: Repository<FeedPostEntity>
     ){}
 
-    createPost(feedPost: FeedPost): Observable<FeedPost> {
-        return from(this.feedPostRepository.save(feedPost));
+    async createPost(feedPost: FeedPost): Promise<FeedPost> {
+        return await this.feedPostRepository.save(feedPost);
     }
 }

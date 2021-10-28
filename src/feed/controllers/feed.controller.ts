@@ -7,9 +7,9 @@ import { FeedService } from '../services/feed.service';
 export class FeedController {
     constructor(private feedService: FeedService) {}
     
-    @Post()
-    create(@Body() post:FeedPost): Observable<FeedPost>
+    @Post('create')
+    async create(@Body() post:FeedPost): Promise<any>
      {
-        return this.feedService.createPost(post)
+        return await this.feedService.createPost(post)
     }
 }
