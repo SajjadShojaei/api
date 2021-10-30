@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { from, Observable } from 'rxjs';
-import { Repository } from 'typeorm';
+import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { FeedPostEntity } from '../models/post.entity';
 import { FeedPost } from '../models/post.interface';
 
@@ -14,5 +14,17 @@ export class FeedService {
 
     async createPost(feedPost: FeedPost): Promise<FeedPost> {
         return await this.feedPostRepository.save(feedPost);
+    }
+
+    async findAllPost(): Promise<FeedPost[]>{
+        return await this.feedPostRepository.find();
+    }
+
+    async updatePost(id: number, feedPost: FeedPost): Promise<UpdateResult> {
+        return await this.feedPostRepository.update(id, feedPost);
+    }
+
+    async deletePost(id: number): Promise<DeleteResult> {
+        return await this.feedPostRepository.delete(id);
     }
 }
