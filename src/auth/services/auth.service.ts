@@ -10,6 +10,9 @@ import { User } from '../models/user.interface';
 
 @Injectable()
 export class AuthService {
+  findUserById(userId: number) {
+    throw new Error('Method not implemented.');
+  }
     constructor (
         @InjectRepository(UserEntity)
         private readonly userRepository: Repository<UserEntity>,
@@ -69,4 +72,6 @@ export class AuthService {
             })
         );
     }
+
+    
 }

@@ -29,4 +29,9 @@ export class FeedService {
      deletePost(id: number): Promise<DeleteResult> {
         return this.feedPostRepository.delete(id);
     }
+
+    findPostById(id: number) : Observable<FeedPost> {
+        return from(this.feedPostRepository.findOne({ id }, { relations: ['author'] }));
+
+    }
 }

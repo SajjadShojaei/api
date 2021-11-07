@@ -1,9 +1,10 @@
-import { CanActivate, ExecutionContext } from "@nestjs/common";
+import { CanActivate, ExecutionContext, Injectable } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
 import { Observable } from "rxjs";
 import { ROLE_TAG } from "../decorator/role.decorator";
 import { User } from "../models/user.interface";
 
+@Injectable()
 export class RoleStrategy implements CanActivate{
     constructor(
         private readonly reflector:Reflector,
