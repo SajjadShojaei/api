@@ -32,7 +32,7 @@ export class AuthController {
         return this.userService.findOne(params.id);
     }
 
-    @RoleTag(Role.ADMIN,Role.PREMIUM)
+    @RoleTag(Role.ADMIN)
     @UseGuards(JwtGuard, RoleStrategy)
     @Put(':id/role')
     updateRoleOfUser(@Param('id') id: string, @Body() user: User) :Observable<User>{
