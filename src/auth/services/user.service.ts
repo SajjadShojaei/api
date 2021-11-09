@@ -40,7 +40,7 @@ export class UserService {
     )
 }
 
-findAll(): Observable<User[]> {
+  findAll(): Observable<User[]> {
         return from(this.userRepository.find()).pipe(
             map((users: User[]) => {
                 users.forEach(function (v) {delete v.password});
@@ -49,5 +49,20 @@ findAll(): Observable<User[]> {
         );
     }
 
+  updateUserImageById(id: number , imagePath: string): Observable<UpdateResult>{
+    const user: User= new UserEntity();
+    user.id = id;
+    user.imagePath = imagePath;
+    return from( this.userRepository.update(id, user));
+  }
+  
+  findImageNameByUserId(id: number): Observable<string>{
+    return from(this.userRepository.findOne({ id })).pipe(
+      map((user: User) => {
+        delete user.password
+        return user.imagePath;
+      })
+    )
+  }
 
 }
