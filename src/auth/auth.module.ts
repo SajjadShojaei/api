@@ -10,6 +10,8 @@ import { JwtStrategy } from './guards/jwt_strategy';
 import { RoleStrategy } from './strategy/role.strategy';
 import { UserService } from './services/user.service';
 import { UserController } from './controllers/user.controller';
+import { FriendRequestEntity } from './models/friend-request.entity';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
     imports: [
@@ -19,7 +21,8 @@ import { UserController } from './controllers/user.controller';
           signOptions: { expiresIn: '3600s' },
         }),
   }),
-    TypeOrmModule.forFeature([UserEntity])
+  ScheduleModule.forRoot(),
+    TypeOrmModule.forFeature([UserEntity, FriendRequestEntity])
   ],
   providers: [AuthService, JwtGuard, JwtStrategy, RoleStrategy, UserService],
   controllers: [AuthController, UserController],

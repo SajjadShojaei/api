@@ -65,4 +65,8 @@ export class UserService {
     )
   }
 
+  // sendFriendRequest(reciverId: number, crearor: User): Observable{
+    
+  // }
+
 }
