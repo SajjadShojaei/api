@@ -7,6 +7,10 @@ const FileType = require('file-type');
 import path = require('path');
 import { filter, from, Observable, of, switchMap } from 'rxjs';
 import { fromFile } from 'file-type';
+import { Cron, CronExpression } from '@nestjs/schedule';
+import { handleRetry } from '@nestjs/typeorm';
+import { profile } from 'console';
+import { CronService } from '../services/cron.service';
 
 type validFileExtention = 'png' | 'jpg' | 'jpeg';
 type validMimeType = 'image/png' | 'image/jpg' | 'image/jpeg';
@@ -62,6 +66,23 @@ export const removeFile = (fullFilePath: string):void => {
     }
 
 }
+// const cronService=new CronService()
+// cronService.mamadTest()
+
+// @Cron(CronExpression.EVERY_10_SECONDS)
+//      function mamadTest()
+//       {
+//         let prof=  saveImageToStorage.storage
+//         prof =  diskStorage({
+//           destination: './images/profiles',
+//         filename: (req, file, cb) => {
+//           const fileExtention: string = path.extname(file.originalname);
+//           const fileName: string = uuidv4() + fileExtention;
+//           cb(null, fileName);
+//         }
+//       })
+//       }
 
 
+   
 

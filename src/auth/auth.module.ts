@@ -12,6 +12,7 @@ import { UserService } from './services/user.service';
 import { UserController } from './controllers/user.controller';
 import { FriendRequestEntity } from './models/friend-request.entity';
 import { ScheduleModule } from '@nestjs/schedule';
+import { CronService } from './services/cron.service';
 
 @Module({
     imports: [
@@ -24,7 +25,7 @@ import { ScheduleModule } from '@nestjs/schedule';
   ScheduleModule.forRoot(),
     TypeOrmModule.forFeature([UserEntity, FriendRequestEntity])
   ],
-  providers: [AuthService, JwtGuard, JwtStrategy, RoleStrategy, UserService],
+  providers: [AuthService, JwtGuard, JwtStrategy, RoleStrategy, UserService, CronService],
   controllers: [AuthController, UserController],
   exports: [AuthService, UserService]
 })
