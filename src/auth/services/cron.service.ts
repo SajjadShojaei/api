@@ -22,7 +22,7 @@ export class CronService {
           
     //     }
       })
-      console.log(prof)
+      // console.log(prof)
       }
 }
 
