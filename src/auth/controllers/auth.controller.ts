@@ -3,7 +3,7 @@ import { map, Observable } from 'rxjs';
 import { RoleTag } from '../decorator/role.decorator';
 import { JwtGuard } from '../guards/jwt.guard';
 import { Role } from '../models/role.enum';
-import { User } from '../models/user.interface';
+import { User } from '../models/user.class';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { RoleStrategy } from '../strategy/role.strategy';

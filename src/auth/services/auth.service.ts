@@ -6,7 +6,7 @@ import * as bcrypt  from 'bcrypt';
 import { map, Observable, switchMap,pipe, from } from 'rxjs';
 import { Repository } from 'typeorm';
 import { UserEntity } from '../models/user.entity';
-import { User } from '../models/user.interface';
+import { User } from '../models/user.class';
 
 @Injectable()
 export class AuthService {
@@ -45,8 +45,8 @@ export class AuthService {
           switchMap((user: User) => {
             if (!user) {
               throw new HttpException(
-                { status: HttpStatus.FORBIDDEN, error: 'Invalid Credentials' },
-                HttpStatus.FORBIDDEN,
+                { status: HttpStatus.NOT_FOUND, error: 'Invalid Credentials' },
+                HttpStatus.NOT_FOUND,
               );
             }
             return from(bcrypt.compare(password, user.password)).pipe(
